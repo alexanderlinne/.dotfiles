@@ -46,6 +46,9 @@ Plug 'bkad/CamelCaseMotion'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'justinmk/vim-sneak'
 
+" formatter
+Plug 'rhysd/vim-clang-format'
+
 " ctags
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'preservim/tagbar'
@@ -64,6 +67,13 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
+
+let mapleader = ","
+
+let g:clang_format#command = "/usr/bin/clang-format-12"
+let g:clang_format#detect_style_file = 1
+let g:clang_format#auto_format_on_insert_leave = 1
+autocmd FileType c,cpp ClangFormatAutoEnable
 
 let g:cursorhold_updatetime = 100
 
@@ -105,8 +115,6 @@ lua require("telescope").load_extension("ui-select")
 lua require("telescope").load_extension("fzy_native")
 lua require("telescope").load_extension("ctags_outline")
 lua require("telescope").load_extension("git_worktree")
-
-let mapleader = " "
 
 nnoremap <leader><leader> :w<cr>
 nnoremap <C-f> :Telescope find_files hidden=true<cr>
