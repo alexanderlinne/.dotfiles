@@ -12,6 +12,9 @@ set wildignore+=.ccls-cache/*
 
 call plug#begin()
 
+" NERDtree
+Plug 'preservim/nerdtree'
+
 " for better responsiveness
 Plug 'antoinemadec/FixCursorHold.nvim'
 
@@ -77,6 +80,8 @@ autocmd FileType c,cpp ClangFormatAutoEnable
 
 let g:cursorhold_updatetime = 100
 
+autocmd VimEnter * nested :NERDTree
+
 autocmd VimEnter * nested :TagbarOpen
 let g:tagbar_autoclose = 0
 
@@ -125,6 +130,7 @@ nnoremap <leader>gww :lua require("telescope").extensions.git_worktree.git_workt
 nnoremap <leader>gwc :lua require("telescope").extensions.git_worktree.create_git_worktree()<cr>
 nnoremap <C-e> :lua require("harpoon.ui").toggle_quick_menu()<cr>
 nnoremap <leader>e :lua require("harpoon.mark").add_file()<cr>
+nnoremap <leader>n :NERDTreeFocus<cr>
 
 " vim sneak
 let g:sneak#label = 1
